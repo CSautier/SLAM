@@ -1,0 +1,14 @@
+A faire ensuite :
+ - place recognition + loop closure (chercher dans les images anciennes pour la recognition (et éventuellement dans les endroits logiques, genre proches, ou insister particulièrement sur les intersections de la carte).
+ - keyframes choisies par distance entre pixels et non par nombre de frames
+
+
+
+à améliorer :
+ - faire la triangulation sur autre chose que les 2 premiers points
+ - corriger le pb de manque de points sur les sous-images compensé par les autres (le but n'est pas une stricte égalité d'une nombre de point par sous-image, mais c'est de réduire la prédominance totale de certaines (le système actuel est déjà pas trop mal sur ce point, mais il faudrait étudier autre chose)
+ - distance entre les points à modifier
+ - rendu 3d plus quali
+ - comparer en pratique ORB et SIFT
+ - méthode de triangulation plus quali (probablement pas crucial)
+ - corriger l'orientation

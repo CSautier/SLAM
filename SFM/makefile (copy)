@@ -1,0 +1,14 @@
+
+all: 
+	@clang++ main.cpp\
+		-std=c++14 \
+		-I /usr/include/eigen3 \
+		-I /usr/include/opencv2 -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_videoio -lopencv_calib3d -lopencv_video\
+ -lopencv_features2d \
+		-lboost_system -lboost_filesystem \
+		-ltbb \
+		-lgtsam \
+		-o main
+
+clean:
+	@rm -rf main

@@ -1,0 +1,21 @@
+update the timestamps of variables i don't want to lose yet.
+The idea would be : as long as there has not been n more observation of the landmark, or k more odometry, and the timestamp difference makes that a variable would be deleted, then give it t more seconds to live, where t is proportionnal with the time between 2 odometries
+
+Even better idea : replace timestamps with indexes and do the same thing, except it will be more readable and i might have a constant number of variables.
+
+  /** Update the Timestamps associated with the keys */
+  updateKeyTimestampMap(const KeyTimestampMap& newTimestamps);
+
+  /** Find all of the keys associated with timestamps before the provided time */
+findKeysBefore(double t)
+
+marginalizeLeaves(
+
+for each object in the landmark map
+if lastindex not zero
+compute ind of lastindex -1 or 1 if lastindex = 1
+check its timestamp
+compare it to the last timestamp added
+if (last timestamp -  penultimate landmark timestamp) >= lag
+	penultimate landmark timestamp = last timestamp - lag + 1
+	last landmark timestamp = max(penultimate landmark timestamp +1, last landmark timestamp) 

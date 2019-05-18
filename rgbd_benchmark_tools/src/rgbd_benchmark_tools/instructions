@@ -1,0 +1,25 @@
+vicon first move : 1547498068.956319727
+result: 1547674894.903203
+
+176825.947
+
+python evaluate_ate.py --offset -2870 --max_difference 0.05 --plot PLOT_wnstatic.png vicon.txt Results.txt 
+
+
+
+
+odom : 0.225644
+
+wnstatic : 0.072505
+
+wnstatic30 : 0.152428
+
+wstatic : 0.990360
+
+usual40 : 1.468511
+
+usual15 : 0.207429
+
+wn40 : 0.195313
+
+wn15 : 0.286996

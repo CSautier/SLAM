@@ -1,0 +1,13 @@
+A faire ensuite :
+ - GTSAM
+ - place recognition + loop closure (chercher dans les images anciennes pour la recognition (et éventuellement dans les endroits logiques, genre proches, ou insister particulièrement sur les intersections de la carte).
+
+
+à améliorer :
+ - faire la triangulation sur autre chose que les 2 premiers points
+ - corriger le pb de manque de points sur les sous-images compensé par les autres (le but n'est pas une stricte égalité d'une nombre de point par sous-image, mais c'est de réduire la prédominance totale de certaines (le système actuel est déjà pas trop mal sur ce point, mais il faudrait étudier autre chose)
+ - calibration de la caméra
+ - rendu 3d (?)
+ - comparer en pratique ORB et SIFT
+ - réparer le pb de recoverPose
+ - méthode de triangulation plus quali

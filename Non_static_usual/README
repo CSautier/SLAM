@@ -1,0 +1,97 @@
+README
+
+This program solves the SLAM problem in case we have 
+
+
+Summary
+I. Requirements
+II. Parameters
+III. Objects
+IV. Installation and use
+V. Modifying the makefile to use another compiler
+VI. How to reuse the code
+
+
+
+
+I. Requirements
+
+This project requires:
+- GTSAM 4 installed for every use (see the list of dependencies for GTSAM)
+- gnuplot for the all the visualizations
+- ffmpeg for the mp4 file
+- a C++11 compiler (clang++ by default, see Section V to use another one)
+
+
+
+
+II. Parameters
+
+default.txt is the parameters file
+
+odometry format:
+t1	x1	y1	z1	qx1	qy1	qz1	qw1
+t2	x2	y2	z2	qx2	qy2	qz2	qw2
+measure format:
+t1	id1	x1	y1	z1	qx1	qy1	qz1	qw1
+t2	id2	x2	y2	z2	qx2	qy2	qz2	qw2
+in order of observation
+
+Note that if the measures file is not accessible, the program will show odometry only results
+
+next results are some ISAM2 parameters for the optimization process (note that bool are 0 or 1)
+
+useMaxMixture sets whether the program should use MaxMixtures or gaussians to model the decay. MaxMixture are harder to optimize, but give better results. When using them, set all the precision parameters to a very accurate value.
+
+saveResults indicates whether the optimized values of the whole dataset should be saved in Results.txt (which can be compared to ground truth), with format:
+t1	x1	y1	z1	qx1	qy1	qz1	qw1
+(note, it doesn't affect the other process)
+
+priorTranslationStd and priorTranslationStd are the noise models std for the first pose (in same unit than x, y, z)
+
+odometryTranslationStd: 0.005 and odometryRotationStd: 0.001 are the noise models std for the odometry
+
+movementThreshold is the threshold indicating if the system has moved, if not, the noise-model applied will be odometryTranslationStd/1000, odometryRotationStd/1000, which is useful if your odometry is very precise at standstill, if not, set movementThreshold to 0
+
+the resolution sets the resolution of both the gif and mp4 if it applies
+
+the 4 next parameters indicate the min and max values for both axis, in the plotting screen. Those that are not set will be automatically set to a value showing everything
+
+This program assumes that odometry is given in world frame, and measurements are given in a camera frame facing forward, this can be modified in the code, lines 155 and 165 respectively, in the function reader of main.cpp
+
+
+
+
+III. Objects
+
+This section explains how to set half-life for moving objects
+
+objects.txt is the file to set half-life to objects
+they must be of format:
+id: [id] half-life: [half life]
+with id an int and half-life a double in seconds
+if [half-life] is not a number or an object does not appear in the list, its half-life will be +infinity
+
+
+
+
+IV. Installation and use
+
+Make sure GTSAM is correctly installed and built
+to run the program, bash process_and_visualisation.bash
+
+
+
+
+V. Modifying the makefile to use another compiler
+
+Replace "clang++" in the first line with the command to your compiler ("g++" for instance).
+The program has only be tested with clang and gcc, see GTSAM compatible compilers for more info.
+
+
+
+
+VI. How to reuse the code
+
+If you want to reuse the code or the concept to perform non-static SLAM, note that the visualization process, as coded takes a huge amount of time (see difference between printed optimization time and total time). Optimization is performed every time an object is observed, which is generally good, but might be too often for some specific problems.
+QR optimization is more robust, but slower than Cholesky.

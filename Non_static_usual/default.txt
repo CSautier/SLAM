@@ -1,0 +1,28 @@
+odometryPath: Data/odometry_corentin.txt
+measurePath: Data/measures_corentin.txt
+gaussnewtonparameter: 1e-7
+relinearizeThreshold: 0.0001
+relineariseSkip: 1
+cacheLinearizedFactors: 0
+enableDetailedResults: 1
+useQRfactorization: 1
+useMaxMixture: 1
+saveResults: 1
+priorTranslationStd: 0.00001
+priorRotationStd: 0.00001
+odometryTranslationStd: 0.005
+odometryRotationStd: 0.001
+measuremenTranslationStd: 0.1
+measurementRotationStd: 0.1
+movementThreshold: 1e-3
+widthResolution 640
+heightResolution 360
+xmin none
+xmax none
+ymin none
+ymax none
+
+
+useAutomaticParameters: false
+
+item [n] [half_life] [kv] [kw]

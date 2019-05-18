@@ -1,0 +1,4 @@
+id: 19 half-life: 15
+id: 11 half-life: 15
+id: 6 half-life: 15
+id: 17 half-life: 15
